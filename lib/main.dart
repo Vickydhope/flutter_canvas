@@ -75,12 +75,8 @@ final _router = GoRouter(
                           child: CardDetailsPage(card: card),
                           reverseTransitionDuration: duration,
                           transitionDuration: duration,
-                          transitionsBuilder: (
-                            context,
-                            animation,
-                            secondaryAnimation,
-                            child,
-                          ) {
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
                             return FadeTransition(
                                 opacity: animation, child: child);
                           },

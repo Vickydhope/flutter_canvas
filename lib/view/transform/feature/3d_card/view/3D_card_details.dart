@@ -34,7 +34,7 @@ class CardDetailsPage extends StatelessWidget {
             child: Hero(
               flightShuttleBuilder: _flightShuttleBuilder,
               tag: card.title,
-              child: const Card3dWidget(),
+              child: Card3dWidget(card: card),
             ),
           )),
         ],
@@ -59,8 +59,7 @@ class CardDetailsPage extends StatelessWidget {
           alignment: Alignment.center,
           transform: Matrix4.identity()
             ..setEntry(3, 2, 0.001)
-            ..rotateX(newValue)/*
-            ..rotateX(newValue)*/,
+            ..rotateX(newValue),
           child: current,
         );
       },

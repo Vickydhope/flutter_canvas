@@ -4,7 +4,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_canvas/generated/assets.dart';
 import 'package:flutter_canvas/main.dart';
-import 'package:flutter_canvas/view/transform/feature/3d_card/view/3D_card_details.dart';
 import 'package:go_router/go_router.dart';
 
 import '../data/model/card3d.dart';
@@ -44,16 +43,28 @@ class CardsHorizontal extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Recently Played,"),
-          Expanded(
-              child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (context, index) => const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Card3dWidget(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Recently Played,",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.grey.shade700),
             ),
-          ))
+          ),
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: _getCards().length,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Card3dWidget(
+                  card: _getCards()[index],
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -61,7 +72,9 @@ class CardsHorizontal extends StatelessWidget {
 }
 
 class Card3dWidget extends StatelessWidget {
-  const Card3dWidget({Key? key}) : super(key: key);
+  const Card3dWidget({Key? key, required this.card}) : super(key: key);
+
+  final Card3d card;
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +85,8 @@ class Card3dWidget extends StatelessWidget {
       elevation: 10,
       child: ClipRRect(
         borderRadius: border,
-        child: Image.asset(
-          Assets.imagesImg,
+        child: Image.network(
+          card.image,
           fit: BoxFit.cover,
         ),
       ),
@@ -164,10 +177,10 @@ class _CardBodyState extends State<CardBody> with TickerProviderStateMixin {
                     child: Stack(
                       clipBehavior: Clip.none,
                       children: List.generate(
-                        4,
+                        _getCards().length,
                         (index) => Card3dItem(
                           animation: _animationControllerMovement,
-                          card: Card3d(title: "hero$index"),
+                          card: _getCards()[index],
                           depth: index,
                           height: constraints.maxHeight / 2,
                           percentage: selectionValue,
@@ -229,7 +242,7 @@ class Card3dItem extends AnimatedWidget {
     return Positioned(
       left: 0,
       right: 0,
-      top: height + (-depth * height / 2.0 * percentage) - bottomMargin,
+      top: height + (-depth * height / 1.8 * percentage) - bottomMargin,
       child: Opacity(
         opacity: verticalFactor == 0 ? 1 : 1 - animation.value,
         child: Hero(
@@ -238,7 +251,6 @@ class Card3dItem extends AnimatedWidget {
             alignment: Alignment.center,
             transform: Matrix4.identity()
               ..setEntry(3, 2, 0.001)
-              ..rotateY(animation.value * pi / 5)
               ..translate(
                 0.0,
                 verticalFactor *
@@ -252,7 +264,9 @@ class Card3dItem extends AnimatedWidget {
               },
               child: SizedBox(
                 height: height,
-                child: const Card3dWidget(),
+                child: Card3dWidget(
+                  card: card,
+                ),
               ),
             ),
           ),
@@ -261,3 +275,26 @@ class Card3dItem extends AnimatedWidget {
     );
   }
 }
+
+List<Card3d> _getCards() => [
+      Card3d(
+        title: "Falling",
+        image:
+            "https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg",
+      ),
+      Card3d(
+        title: "Cloud",
+        image:
+            "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/pink-cloud-cd-cover-music-design-template-258c703e9959b4635649e3944488c688_screen.jpg?ts=1631060402",
+      ),
+      Card3d(
+        title: "3Force",
+        image:
+            "https://mir-s3-cdn-cf.behance.net/project_modules/hd/c516f191023435.5e270367679f1.png",
+      ),
+      Card3d(
+        title: "Kenya East",
+        image:
+            "https://d1wnwqwep8qkqc.cloudfront.net/uploads/stage/stage_image/21198/optimized_large_thumb_stage.jpg",
+      ),
+    ];

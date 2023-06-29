@@ -16,21 +16,6 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: size.height * 0.1,
-          ),
-          const Align(
-              child: SizedBox(
-            height: 150,
-            child: Hero(
-              tag: "image",
-              child: Card3dWidget(),
-            ),
-          )),
-        ],
-      ),
     );
   }
 }
