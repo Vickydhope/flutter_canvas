@@ -25,6 +25,7 @@ class GlassMorphismPage extends StatelessWidget {
             "Glass Morphism",
             style: TextStyle(
               color: Colors.black87,
+
             ),
           ),
           elevation: 0.0,
