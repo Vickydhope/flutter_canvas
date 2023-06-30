@@ -20,7 +20,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       body: Center(
         child: TextButton(
             onPressed: () {
-              print(widget.pid);
               context.go(Uri(
                       path:
                           '/home/products/123/productDetail/${int.parse(widget.pid) + 1}')

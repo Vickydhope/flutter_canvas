@@ -33,6 +33,18 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: const Text("3D Card Animation"),
             ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.neomorphism.name);
+              },
+              child: Text(AppRoutes.neomorphism.name.toUpperCase()),
+            ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.glassmorphism.name);
+              },
+              child: Text(AppRoutes.glassmorphism.name.toUpperCase()),
+            ),
           ],
         ),
       ),

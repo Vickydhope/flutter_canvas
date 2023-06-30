@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_canvas/generated/assets.dart';
 import 'package:flutter_canvas/main.dart';
 import 'package:go_router/go_router.dart';
 

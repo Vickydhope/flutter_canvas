@@ -37,6 +37,18 @@ class CardDetailsPage extends StatelessWidget {
               child: Card3dWidget(card: card),
             ),
           )),
+          const Spacer(),
+          TweenAnimationBuilder(
+            curve: Curves.easeInOut,
+              tween: Tween<double>(begin: 1.0, end: 0.0),
+              duration: const Duration(milliseconds: 750),
+              builder: (context, value, child) {
+                return Transform.translate(
+                  offset: Offset(0.0, value * 100),
+                  child: child,
+                );
+              },
+              child: _buildPlayerControls()),
         ],
       ),
     );
@@ -51,6 +63,7 @@ class CardDetailsPage extends StatelessWidget {
       current = fromHeroContext.widget;
     }
 
+    print(animation.toString());
     return AnimatedBuilder(
       animation: animation,
       builder: (context, child) {
@@ -58,11 +71,45 @@ class CardDetailsPage extends StatelessWidget {
         return Transform(
           alignment: Alignment.center,
           transform: Matrix4.identity()
-            ..setEntry(3, 2, 0.001)
+            ..setEntry(3, 2, 0.0015)
             ..rotateX(newValue),
           child: current,
         );
       },
+    );
+  }
+
+  Widget _buildPlayerControls() {
+    return Column(
+      children: [
+        Text(
+          card.title,
+          style: const TextStyle(
+            fontSize: 18,
+            color: Colors.orange,
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(
+                Icons.skip_previous,
+                size: 35,
+              ),
+              Icon(
+                Icons.play_circle_rounded,
+                size: 50,
+              ),
+              Icon(
+                Icons.skip_next,
+                size: 35,
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }

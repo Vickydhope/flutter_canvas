@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_canvas/generated/assets.dart';
 import 'package:flutter_canvas/view/splash/splash_screen.dart';
 import 'package:flutter_canvas/view/transform/feature/3d_card/data/model/card3d.dart';
 import 'package:flutter_canvas/view/transform/feature/3d_card/view/3D_card_details.dart';
 import 'package:flutter_canvas/view/transform/feature/3d_card/view/cards_3d_home.dart';
+import 'package:flutter_canvas/view/transform/feature/glass_morphism/GlassMorpohismPage.dart';
+import 'package:flutter_canvas/view/transform/feature/neumorphism/neomorphism_page.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:flutter_canvas/account_screen.dart';
 import 'package:flutter_canvas/app_scaffold.dart';
 import 'package:flutter_canvas/home_screen.dart';
-import 'package:flutter_canvas/product_details.dart';
-import 'package:flutter_canvas/products_screen.dart';
 import 'package:flutter_canvas/search_screen.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
@@ -24,6 +23,8 @@ enum AppRoutes {
   cards,
   cards3dHome,
   cardDetails,
+  neomorphism,
+  glassmorphism,
 }
 
 void main() {
@@ -51,40 +52,10 @@ final _router = GoRouter(
       },
       routes: <RouteBase>[
         GoRoute(
-            name: AppRoutes.home.name,
-            path: '/home',
-            builder: (context, state) => const HomeScreen(title: "Home"),
-            routes: [
-              GoRoute(
-                path: "cards",
-                name: AppRoutes.cards.name,
-                builder: (context, state) => const MovingCardPage(),
-              ),
-              GoRoute(
-                  path: "cards3d",
-                  name: AppRoutes.cards3dHome.name,
-                  builder: (context, state) => const Cards3DHome(),
-                  routes: [
-                    GoRoute(
-                      path: "card_details",
-                      name: AppRoutes.cardDetails.name,
-                      pageBuilder: (context, state) {
-                        var card = state.extra as Card3d;
-                        const duration = Duration(milliseconds: 750);
-                        return CustomTransitionPage(
-                          child: CardDetailsPage(card: card),
-                          reverseTransitionDuration: duration,
-                          transitionDuration: duration,
-                          transitionsBuilder:
-                              (context, animation, secondaryAnimation, child) {
-                            return FadeTransition(
-                                opacity: animation, child: child);
-                          },
-                        );
-                      },
-                    )
-                  ]),
-            ]),
+          name: AppRoutes.home.name,
+          path: '/home',
+          builder: (context, state) => const HomeScreen(title: "Home"),
+        ),
         GoRoute(
           path: '/account',
           pageBuilder: (context, state) {
@@ -101,6 +72,47 @@ final _router = GoRouter(
         ),
       ],
     ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/cards",
+      name: AppRoutes.cards.name,
+      builder: (context, state) => const MovingCardPage(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/neomorphism",
+      name: AppRoutes.neomorphism.name,
+      builder: (context, state) => const NeoMorphismPage(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/glassmorphism",
+      name: AppRoutes.glassmorphism.name,
+      builder: (context, state) => const GlassMorphismPage(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/cards3d",
+      name: AppRoutes.cards3dHome.name,
+      builder: (context, state) => const Cards3DHome(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/card_details",
+      name: AppRoutes.cardDetails.name,
+      pageBuilder: (context, state) {
+        var card = state.extra as Card3d;
+        const duration = Duration(milliseconds: 750);
+        return CustomTransitionPage(
+          child: CardDetailsPage(card: card),
+          reverseTransitionDuration: duration,
+          transitionDuration: duration,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+        );
+      },
+    )
   ],
 );
 
