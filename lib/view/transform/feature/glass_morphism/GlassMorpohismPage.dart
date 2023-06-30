@@ -14,6 +14,7 @@ class GlassMorphismPage extends StatelessWidget {
       height: double.maxFinite,
       width: double.maxFinite,
       decoration: const BoxDecoration(
+
         image: DecorationImage(
             image: AssetImage(Assets.imagesImg2), fit: BoxFit.cover),
       ),
