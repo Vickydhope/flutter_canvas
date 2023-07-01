@@ -20,6 +20,7 @@ class HeroesListVertical extends StatelessWidget {
           itemBuilder: (context, index) => ListTile(
             title: Row(
               children: [
+
                 HeroCard(
                     data: HeroData(
                         tag: "tag$index",
