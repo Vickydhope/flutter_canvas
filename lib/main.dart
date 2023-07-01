@@ -4,7 +4,12 @@ import 'package:flutter_canvas/view/transform/feature/3d_card/data/model/card3d.
 import 'package:flutter_canvas/view/transform/feature/3d_card/view/3D_card_details.dart';
 import 'package:flutter_canvas/view/transform/feature/3d_card/view/cards_3d_home.dart';
 import 'package:flutter_canvas/view/transform/feature/glass_morphism/GlassMorpohismPage.dart';
+import 'package:flutter_canvas/view/transform/feature/hero_list/hero_list_page.dart';
+import 'package:flutter_canvas/view/transform/feature/hero_list/heroes_list_vertical.dart';
 import 'package:flutter_canvas/view/transform/feature/neumorphism/neomorphism_page.dart';
+import 'package:flutter_canvas/view/transform/feature/viewpager/components/movie.dart';
+import 'package:flutter_canvas/view/transform/feature/viewpager/movie_details.dart';
+import 'package:flutter_canvas/view/transform/feature/viewpager/movies_page.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:flutter_canvas/account_screen.dart';
@@ -25,6 +30,10 @@ enum AppRoutes {
   cardDetails,
   neomorphism,
   glassmorphism,
+  movies,
+  movieDetails,
+  heroList,
+  heroListVertical,
 }
 
 void main() {
@@ -95,6 +104,55 @@ final _router = GoRouter(
       path: "/cards3d",
       name: AppRoutes.cards3dHome.name,
       builder: (context, state) => const Cards3DHome(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/heroList",
+      name: AppRoutes.heroList.name,
+      builder: (context, state) => const HeroListPage(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/heroListVertical",
+      name: AppRoutes.heroListVertical.name,
+      pageBuilder: (context, state) {
+        const duration = Duration(milliseconds: 600);
+        return CustomTransitionPage(
+          child: const HeroesListVertical(),
+          transitionDuration: duration,
+          reverseTransitionDuration: duration,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              FadeTransition(
+            opacity: animation,
+            child: child,
+          ),
+        );
+      },
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/movie",
+      name: AppRoutes.movies.name,
+      builder: (context, state) => const MoviesPage(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/movieDetails",
+      name: AppRoutes.movieDetails.name,
+      pageBuilder: (context, state) {
+        final movie = state.extra as Movie;
+        const duration = Duration(milliseconds: 600);
+        return CustomTransitionPage(
+          child: MovieDetailsPage(movie: movie),
+          transitionDuration: duration,
+          reverseTransitionDuration: duration,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              FadeTransition(
+            opacity: animation,
+            child: child,
+          ),
+        );
+      },
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

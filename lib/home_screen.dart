@@ -45,6 +45,18 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: Text(AppRoutes.glassmorphism.name.toUpperCase()),
             ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.movies.name);
+              },
+              child: Text(AppRoutes.movies.name.toUpperCase()),
+            ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.heroList.name);
+              },
+              child: Text(AppRoutes.heroList.name.toUpperCase()),
+            ),
           ],
         ),
       ),

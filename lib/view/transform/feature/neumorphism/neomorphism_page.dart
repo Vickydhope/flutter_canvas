@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_canvas/generated/assets.dart';
 import 'package:flutter_canvas/view/transform/feature/neumorphism/components/neomorphism_container.dart';
 
 class NeoMorphismPage extends StatelessWidget {
@@ -24,9 +25,9 @@ class NeoMorphismPage extends StatelessWidget {
             const SizedBox(height: 50),
             NeoMorphismContainer(
                 shape: BoxShape.circle,
-                child: Image.network(
-                  "https://images.crowdspring.com/blog/wp-content/uploads/2022/08/18131304/apple_logo_black.svg_.png",
-                  color: Colors.grey,
+                child: Image.asset(
+                  Assets.imagesImg4,
+                  fit: BoxFit.cover,
                 )),
           ],
         ),

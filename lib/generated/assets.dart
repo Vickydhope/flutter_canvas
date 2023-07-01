@@ -5,12 +5,26 @@ class Assets {
   static const String images1Back = 'assets/images/1_back.png';
   static const String images1Front = 'assets/images/1_front.png';
   static const String imagesAppLogo = 'assets/images/app_logo.png';
+  static const String imagesAppleLogo = 'assets/images/apple_logo.png';
+  static const String imagesAvatar1 = 'assets/images/avatar-1.png';
+  static const String imagesAvatar2 = 'assets/images/avatar-2.png';
+  static const String imagesAvatar3 = 'assets/images/avatar-3.png';
+  static const String imagesAvatar4 = 'assets/images/avatar-4.png';
+  static const String imagesAvatar5 = 'assets/images/avatar-5.png';
+  static const String imagesAvatar6 = 'assets/images/avatar-6.png';
+  static const String imagesAvatar7 = 'assets/images/avatar-7.png';
+  static const String imagesAvatar8 = 'assets/images/avatar-8.png';
+  static const String imagesBatman = 'assets/images/batman.png';
+  static const String imagesBlackWidow = 'assets/images/black_widow.jpg';
   static const String imagesImg = 'assets/images/img.png';
   static const String imagesImg1 = 'assets/images/img_1.png';
   static const String imagesImg2 = 'assets/images/img_2.png';
   static const String imagesImg3 = 'assets/images/img_3.png';
+  static const String imagesImg4 = 'assets/images/img_4.png';
+  static const String imagesJoker = 'assets/images/joker.jpg';
   static const String imagesSlider1 = 'assets/images/slider1.png';
   static const String imagesSlider2 = 'assets/images/slider2.png';
   static const String imagesSlider3 = 'assets/images/slider3.png';
-
+  static const String imagesSpiderman = 'assets/images/spiderman.jpg';
+  static const String imagesStarWars = 'assets/images/star_wars.jpg';
 }

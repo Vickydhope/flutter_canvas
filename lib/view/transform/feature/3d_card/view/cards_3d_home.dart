@@ -291,8 +291,8 @@ List<Card3d> _getCards() => [
             "https://mir-s3-cdn-cf.behance.net/project_modules/hd/c516f191023435.5e270367679f1.png",
       ),
       Card3d(
-        title: "Kenya East",
+        title: "Miami Horror Illumination",
         image:
-            "https://d1wnwqwep8qkqc.cloudfront.net/uploads/stage/stage_image/21198/optimized_large_thumb_stage.jpg",
+            "https://e.snmc.io/i/1200/s/9114e01b9bce4d4e819641b9feda3344/4151122",
       ),
     ];
