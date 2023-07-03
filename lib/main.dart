@@ -7,7 +7,7 @@ import 'package:flutter_canvas/view/transform/feature/glass_morphism/GlassMorpoh
 import 'package:flutter_canvas/view/transform/feature/hero_list/hero_list_page.dart';
 import 'package:flutter_canvas/view/transform/feature/hero_list/heroes_list_vertical.dart';
 import 'package:flutter_canvas/view/transform/feature/neumorphism/neomorphism_page.dart';
-import 'package:flutter_canvas/view/transform/feature/viewpager/components/movie.dart';
+import 'package:flutter_canvas/view/transform/feature/viewpager/model/movie.dart';
 import 'package:flutter_canvas/view/transform/feature/viewpager/movie_details.dart';
 import 'package:flutter_canvas/view/transform/feature/viewpager/movies_page.dart';
 
@@ -111,7 +111,7 @@ final _router = GoRouter(
       name: AppRoutes.heroList.name,
       builder: (context, state) => const HeroListPage(),
     ),
-    GoRoute(
+    /*  GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
       path: "/heroListVertical",
       name: AppRoutes.heroListVertical.name,
@@ -128,7 +128,7 @@ final _router = GoRouter(
           ),
         );
       },
-    ),
+    ),*/
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
       path: "/movie",
@@ -145,8 +145,8 @@ final _router = GoRouter(
         return CustomTransitionPage(
           child: MovieDetailsPage(movie: movie),
           transitionDuration: duration,
-          reverseTransitionDuration: duration,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+          reverseTransitionDuration: const Duration(milliseconds: 300),
+          transitionsBuilder: (_, animation, secondaryAnimation, child) =>
               FadeTransition(
             opacity: animation,
             child: child,

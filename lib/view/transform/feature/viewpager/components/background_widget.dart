@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'movie.dart';
+import '../model/movie.dart';
 
 class BackgroundWidget extends StatelessWidget {
   const BackgroundWidget({
@@ -30,7 +30,9 @@ class BackgroundWidget extends StatelessWidget {
             height: double.infinity,
             width: double.infinity,
             child: Image.asset(
+
               movie.image,
+              alignment: Alignment.topCenter,
               fit: BoxFit.cover,
             ),
           ),

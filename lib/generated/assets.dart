@@ -21,10 +21,12 @@ class Assets {
   static const String imagesImg2 = 'assets/images/img_2.png';
   static const String imagesImg3 = 'assets/images/img_3.png';
   static const String imagesImg4 = 'assets/images/img_4.png';
+  static const String imagesImg5 = 'assets/images/img_5.png';
   static const String imagesJoker = 'assets/images/joker.jpg';
   static const String imagesSlider1 = 'assets/images/slider1.png';
   static const String imagesSlider2 = 'assets/images/slider2.png';
   static const String imagesSlider3 = 'assets/images/slider3.png';
   static const String imagesSpiderman = 'assets/images/spiderman.jpg';
   static const String imagesStarWars = 'assets/images/star_wars.jpg';
+
 }

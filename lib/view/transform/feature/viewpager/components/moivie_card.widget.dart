@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_canvas/generated/assets.dart';
-import 'package:flutter_canvas/view/transform/feature/viewpager/components/movie.dart';
+import 'package:flutter_canvas/view/transform/feature/viewpager/model/movie.dart';
 
 class MovieCard extends StatelessWidget {
   MovieCard({Key? key, required this.movie}) : super(key: key);
@@ -42,11 +42,10 @@ class MovieCard extends StatelessWidget {
             _buildGenres(movie),
             const SizedBox(height: 8),
             _buildRating(movie),
-            const Text(
-              "...",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16,)
+            const Text("...", style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(
+              height: 16,
+            )
           ],
         ),
       ),
@@ -62,6 +61,8 @@ class MovieCard extends StatelessWidget {
         child: ClipRRect(
           borderRadius: border,
           child: Image.asset(
+            width: double.infinity,
+            alignment: Alignment.topCenter,
             movie.image,
             fit: BoxFit.cover,
           ),

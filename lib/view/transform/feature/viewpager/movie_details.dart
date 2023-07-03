@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_canvas/view/transform/feature/viewpager/components/movie.dart';
+import 'package:flutter_canvas/view/transform/feature/viewpager/model/movie.dart';
 
-class MovieDetailsPage extends StatelessWidget {
-  const MovieDetailsPage({Key? key, required this.movie}) : super(key: key);
+class MovieDetailsPage extends StatefulWidget {
+  const MovieDetailsPage({Key? key, required this.movie, this.animation})
+      : super(key: key);
 
   final Movie movie;
+  final Animation<double>? animation;
+
+  @override
+  State<MovieDetailsPage> createState() => _MovieDetailsPageState();
+}
+
+class _MovieDetailsPageState extends State<MovieDetailsPage>
+    with SingleTickerProviderStateMixin {
+  final duration = const Duration(milliseconds: 600);
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +33,19 @@ class MovieDetailsPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Hero(
-            tag: movie.image,
-            child: Image.asset(
-              movie.image,
-              height: 300,
-              width: double.infinity,
-              alignment: Alignment.topCenter,
-              fit: BoxFit.cover,
+            tag: widget.movie.image,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(16),
+                topLeft: Radius.circular(16),
+              ),
+              child: Image.asset(
+                widget.movie.image,
+                height: 300,
+                width: double.infinity,
+                alignment: Alignment.topCenter,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Expanded(
@@ -34,11 +55,11 @@ class MovieDetailsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Hero(
-                    tag: movie.title,
+                    tag: widget.movie.title,
                     child: Material(
                       color: Colors.transparent,
                       child: Text(
-                        movie.title,
+                        widget.movie.title,
                         style: TextStyle(
                           fontSize: 26,
                           color: Colors.grey.shade800,
@@ -49,11 +70,32 @@ class MovieDetailsPage extends StatelessWidget {
                   const SizedBox(
                     height: 4,
                   ),
-                  _buildGenres(movie),
+                  _buildGenres(widget.movie),
                   const SizedBox(
                     height: 4,
                   ),
-                  _buildRating(movie),
+                  _buildRating(widget.movie),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  AnimatedBuilder(
+                    animation: widget.animation!,
+                    builder: (BuildContext context, Widget? child) =>
+                        Transform.translate(
+                      offset: Offset(
+                        0,
+                        -(((widget.animation?.value ?? 1) - 1) *
+                            MediaQuery.of(context).size.height),
+                      ),
+                      child: FadeTransition(
+                          opacity: CurvedAnimation(
+                            parent: widget.animation!,
+                            curve: const Interval(0.5, 1),
+                          ),
+                          child: child),
+                    ),
+                    child: _buildDescription(widget.movie),
+                  )
                 ],
               ),
             ),
@@ -112,6 +154,18 @@ class MovieDetailsPage extends StatelessWidget {
                 ),
               ))
           .toList(),
+    );
+  }
+
+  Text _buildDescription(Movie movie) {
+    return Text(
+      movie.description,
+      style: TextStyle(
+        color: Colors.grey.shade800,
+        fontSize: 20,
+        letterSpacing: 0.5,
+        wordSpacing: 1.5,
+      ),
     );
   }
 }
