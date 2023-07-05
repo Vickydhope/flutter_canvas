@@ -24,7 +24,7 @@ class HeroesListVertical extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(height: 16),
           padding: const EdgeInsets.all(5),
           scrollDirection: Axis.vertical,
-          itemCount: 4,
+          itemCount: 8,
           itemBuilder: (context, index) => Row(
             children: [
               HeroCard(
@@ -42,17 +42,24 @@ class HeroesListVertical extends StatelessWidget {
                   animation: animation,
                   builder: (BuildContext context, Widget? child) {
                     final newValue = (1.0 - animation.value) * size.width;
+                    final rotateValue =
+                        lerpDouble(0, pi * 2, animation.value) ?? 0.0;
                     return FadeTransition(
                       opacity: CurvedAnimation(
                           curve: Interval(index / 8, 1), parent: animation),
-                      child: Transform.translate(
-                        offset: Offset(newValue, 0),
+                      child: Transform(
+                        alignment: Alignment.center,
+                        transform: Matrix4.identity()
+                          ..translate(newValue)
+                          ..scale(animation.value),
                         child: child,
                       ),
                     );
                   },
-                  child: const Text("Quick brown fox jumps over the lazy dog!",
-                      style: TextStyle(fontSize: 20)),
+                  child: const Text(
+                    "Quick brown fox jumps over the lazy dog!",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
               ),
             ],

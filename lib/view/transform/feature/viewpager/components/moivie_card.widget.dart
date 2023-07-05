@@ -72,27 +72,31 @@ class MovieCard extends StatelessWidget {
   }
 
   Widget _buildGenres(Movie movie) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: movie.genres
-          .map((genre) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: Hero(
-                  tag: movie.image + genre,
-                  child: Material(
-                    color: Colors.transparent,
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.grey.shade600),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: movie.genres
+            .map((genre) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Hero(
+                    tag: movie.image + genre,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Container(
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: Colors.grey.shade600),
+                        ),
+                        child: Text(genre),
                       ),
-                      child: Text(genre),
                     ),
                   ),
-                ),
-              ))
-          .toList(),
+                ))
+            .toList(),
+      ),
     );
   }
 

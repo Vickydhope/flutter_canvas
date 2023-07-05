@@ -24,6 +24,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         elevation: 0,
@@ -52,7 +53,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Hero(
                     tag: widget.movie.title,
@@ -61,7 +62,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
                       child: Text(
                         widget.movie.title,
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 22,
                           color: Colors.grey.shade800,
                         ),
                       ),
@@ -76,7 +77,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
                   ),
                   _buildRating(widget.movie),
                   const SizedBox(
-                    height: 24,
+                    height: 8,
                   ),
                   AnimatedBuilder(
                     animation: widget.animation!,
@@ -85,16 +86,24 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
                       offset: Offset(
                         0,
                         -(((widget.animation?.value ?? 1) - 1) *
-                            MediaQuery.of(context).size.height),
+                            (MediaQuery.of(context).size.height / 2)),
                       ),
                       child: FadeTransition(
                           opacity: CurvedAnimation(
                             parent: widget.animation!,
-                            curve: const Interval(0.5, 1),
+                            curve: const Interval(0, 0.8,
+                                curve: Curves.easeInSine),
                           ),
                           child: child),
                     ),
-                    child: _buildDescription(widget.movie),
+                    child: ScaleTransition(
+                        scale: CurvedAnimation(
+                            parent: widget.animation!,
+                            reverseCurve: const Interval(0, 0.8,
+                                curve: Curves.fastOutSlowIn),
+                            curve:
+                                const Interval(0, 0.8, curve: Curves.easeOut)),
+                        child: _buildDescription(widget.movie)),
                   )
                 ],
               ),
@@ -121,6 +130,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
             (index) => Hero(
                   tag: movie.title + index.toString() + movie.rating.toString(),
                   child: const Material(
+                    color: Colors.transparent,
                     child: Icon(
                       Icons.star_rate,
                       size: 18,

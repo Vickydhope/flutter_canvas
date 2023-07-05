@@ -7,8 +7,10 @@ import 'package:flutter_canvas/view/transform/feature/glass_morphism/GlassMorpoh
 import 'package:flutter_canvas/view/transform/feature/hero_list/hero_list_page.dart';
 import 'package:flutter_canvas/view/transform/feature/hero_list/heroes_list_vertical.dart';
 import 'package:flutter_canvas/view/transform/feature/neumorphism/neomorphism_page.dart';
+import 'package:flutter_canvas/view/transform/feature/places_ui/places_viewpager_page.dart';
 import 'package:flutter_canvas/view/transform/feature/viewpager/model/movie.dart';
 import 'package:flutter_canvas/view/transform/feature/viewpager/movie_details.dart';
+import 'package:flutter_canvas/view/transform/feature/viewpager/movies_grid_page.dart';
 import 'package:flutter_canvas/view/transform/feature/viewpager/movies_page.dart';
 
 import 'package:go_router/go_router.dart';
@@ -32,8 +34,10 @@ enum AppRoutes {
   glassmorphism,
   movies,
   movieDetails,
+  movieGrid,
   heroList,
   heroListVertical,
+  places,
 }
 
 void main() {
@@ -111,6 +115,12 @@ final _router = GoRouter(
       name: AppRoutes.heroList.name,
       builder: (context, state) => const HeroListPage(),
     ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/movieGrid",
+      name: AppRoutes.movieGrid.name,
+      builder: (context, state) => const MoviesGridPage(),
+    ),
     /*  GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
       path: "/heroListVertical",
@@ -134,6 +144,12 @@ final _router = GoRouter(
       path: "/movie",
       name: AppRoutes.movies.name,
       builder: (context, state) => const MoviesPage(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/places",
+      name: AppRoutes.places.name,
+      builder: (context, state) => const PlacesViewPagerPage(),
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

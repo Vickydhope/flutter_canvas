@@ -57,6 +57,18 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: Text(AppRoutes.heroList.name.toUpperCase()),
             ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.movieGrid.name);
+              },
+              child: Text(AppRoutes.movieGrid.name.toUpperCase()),
+            ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.places.name);
+              },
+              child: Text(AppRoutes.places.name.toUpperCase()),
+            ),
           ],
         ),
       ),

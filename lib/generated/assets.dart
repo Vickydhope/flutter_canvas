@@ -14,8 +14,10 @@ class Assets {
   static const String imagesAvatar6 = 'assets/images/avatar-6.png';
   static const String imagesAvatar7 = 'assets/images/avatar-7.png';
   static const String imagesAvatar8 = 'assets/images/avatar-8.png';
+  static const String imagesBali = 'assets/images/bali.webp';
   static const String imagesBatman = 'assets/images/batman.png';
   static const String imagesBlackWidow = 'assets/images/black_widow.jpg';
+  static const String imagesDubai = 'assets/images/dubai.webp';
   static const String imagesImg = 'assets/images/img.png';
   static const String imagesImg1 = 'assets/images/img_1.png';
   static const String imagesImg2 = 'assets/images/img_2.png';
@@ -23,6 +25,9 @@ class Assets {
   static const String imagesImg4 = 'assets/images/img_4.png';
   static const String imagesImg5 = 'assets/images/img_5.png';
   static const String imagesJoker = 'assets/images/joker.jpg';
+  static const String imagesMaldives = 'assets/images/maldives.webp';
+  static const String imagesPhuket = 'assets/images/phuket.webp';
+  static const String imagesSeychelle = 'assets/images/seychelle.webp';
   static const String imagesSlider1 = 'assets/images/slider1.png';
   static const String imagesSlider2 = 'assets/images/slider2.png';
   static const String imagesSlider3 = 'assets/images/slider3.png';
