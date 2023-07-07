@@ -4,6 +4,7 @@ import 'package:flutter_canvas/view/transform/feature/places_ui/components/star_
 import 'package:flutter_canvas/view/transform/feature/places_ui/data/hero_tag.dart';
 import 'package:flutter_canvas/view/transform/feature/places_ui/data/reviews.dart';
 import 'package:flutter_canvas/view/transform/feature/places_ui/model/location.dart';
+import 'package:flutter_canvas/view/transform/feature/places_ui/model/review.dart';
 
 import 'hero_widget.dart';
 
@@ -53,13 +54,24 @@ class ExpandedContentWidget extends StatelessWidget {
             ),
           ),
           HeroWidget(
-              tag: HeroTag.stars(location), child: StarWidget(stars: location.stars)),
+              tag: HeroTag.stars(location),
+              child: StarWidget(stars: location.stars)),
         ],
       );
 
-  Widget buildReview(Location location) {
+  Widget buildReview(Location location, {int maxItems = 4}) {
+    final List<Review> reviews = [];
+
+    if (location.reviews.length > maxItems) {
+      for (int i = 0; i < maxItems; i++) {
+        reviews.add(location.reviews[i]);
+      }
+    } else {
+      reviews.addAll(location.reviews);
+    }
+
     return Row(
-      children: location.reviews.map((review) {
+      children: reviews.map((review) {
         final pageIndex = locations.indexOf(location);
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 4),

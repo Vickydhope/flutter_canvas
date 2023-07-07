@@ -4,6 +4,7 @@ class Assets {
 
   static const String images1Back = 'assets/images/1_back.png';
   static const String images1Front = 'assets/images/1_front.png';
+  static const String imagesAlbumCover = 'assets/images/album_cover.jpeg';
   static const String imagesAppLogo = 'assets/images/app_logo.png';
   static const String imagesAppleLogo = 'assets/images/apple_logo.png';
   static const String imagesAvatar1 = 'assets/images/avatar-1.png';
@@ -17,6 +18,7 @@ class Assets {
   static const String imagesBali = 'assets/images/bali.webp';
   static const String imagesBatman = 'assets/images/batman.png';
   static const String imagesBlackWidow = 'assets/images/black_widow.jpg';
+  static const String imagesDisk = 'assets/images/disk.png';
   static const String imagesDubai = 'assets/images/dubai.webp';
   static const String imagesImg = 'assets/images/img.png';
   static const String imagesImg1 = 'assets/images/img_1.png';

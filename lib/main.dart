@@ -3,6 +3,7 @@ import 'package:flutter_canvas/view/splash/splash_screen.dart';
 import 'package:flutter_canvas/view/transform/feature/3d_card/data/model/card3d.dart';
 import 'package:flutter_canvas/view/transform/feature/3d_card/view/3D_card_details.dart';
 import 'package:flutter_canvas/view/transform/feature/3d_card/view/cards_3d_home.dart';
+import 'package:flutter_canvas/view/transform/feature/disk_animation/disk_animation_page.dart';
 import 'package:flutter_canvas/view/transform/feature/glass_morphism/GlassMorpohismPage.dart';
 import 'package:flutter_canvas/view/transform/feature/hero_list/hero_list_page.dart';
 import 'package:flutter_canvas/view/transform/feature/hero_list/heroes_list_vertical.dart';
@@ -38,6 +39,7 @@ enum AppRoutes {
   heroList,
   heroListVertical,
   places,
+  diskAnimation,
 }
 
 void main() {
@@ -150,6 +152,12 @@ final _router = GoRouter(
       path: "/places",
       name: AppRoutes.places.name,
       builder: (context, state) => const PlacesViewPagerPage(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/diskAnimation",
+      name: AppRoutes.diskAnimation.name,
+      builder: (context, state) => const DiskAnimationPage(),
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

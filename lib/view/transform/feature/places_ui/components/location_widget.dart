@@ -73,8 +73,8 @@ class _LocationWidgetState extends State<LocationWidget> {
     } else {
       Navigator.of(context).push(
         PageRouteBuilder(
-          transitionDuration: 750.ms,
-          reverseTransitionDuration: 750.ms,
+          transitionDuration: 450.ms,
+          reverseTransitionDuration: 450.ms,
           pageBuilder: (context, animation, secondaryAnimation) {
             final curvedAnimation = CurvedAnimation(
               parent: animation,
@@ -85,7 +85,7 @@ class _LocationWidgetState extends State<LocationWidget> {
               opacity: curvedAnimation,
               child: PlaceDetailsPage(
                 location: widget.location,
-                animation : animation,
+                animation: animation,
               ),
             );
           },
