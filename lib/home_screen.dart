@@ -75,6 +75,18 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: Text(AppRoutes.diskAnimation.name.toUpperCase()),
             ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.gamesDashboard.name);
+              },
+              child: Text(AppRoutes.gamesDashboard.name.toUpperCase()),
+            ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.clock.name);
+              },
+              child: Text(AppRoutes.clock.name.toUpperCase()),
+            ),
           ],
         ),
       ),

@@ -31,14 +31,14 @@ class _LocationWidgetState extends State<LocationWidget> {
         alignment: Alignment.center,
         children: [
           AnimatedPositioned(
-            duration: 500.ms,
+            duration: 300.ms,
             bottom: isExpanded ? 40 : 100,
             width: isExpanded ? size.width * 0.78 : size.width * 0.7,
             height: isExpanded ? size.height * 0.6 : size.height * 0.5,
             child: ExpandedContentWidget(location: widget.location),
           ),
           AnimatedPositioned(
-            duration: const Duration(milliseconds: 500),
+            duration: 300.ms,
             bottom: isExpanded ? 150 : 100,
             child: GestureDetector(
               onPanUpdate: onPanUpdate,

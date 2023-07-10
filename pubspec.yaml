@@ -39,6 +39,7 @@ dependencies:
   go_router: ^6.5.8
   url_strategy: ^0.2.0
   carousel_slider: ^4.2.1
+  intl: ^0.18.1
 
 
 dev_dependencies:
