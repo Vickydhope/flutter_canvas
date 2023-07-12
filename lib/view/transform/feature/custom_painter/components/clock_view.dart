@@ -42,7 +42,7 @@ class _ClockViewState extends State<ClockView> {
           height: 16,
         ),
         Text(
-          DateFormat('hh:mm aa').format(DateTime.now()),
+          DateFormat('hh:mm:ss aa').format(DateTime.now()),
           style: const TextStyle(
               color: Colors.white, fontSize: 21, fontWeight: FontWeight.bold),
         ),
@@ -140,7 +140,6 @@ class ClockPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
-
 }
 
 class HalfCircle extends CustomPainter {

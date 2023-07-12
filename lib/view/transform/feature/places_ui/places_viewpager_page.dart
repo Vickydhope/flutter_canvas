@@ -7,7 +7,7 @@ class PlacesViewPagerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: const Color(0xFF2d2F41),
       appBar: buildAppBar(),
       bottomNavigationBar: buildBottomNavigation(),
       body: const PlacesWidget(),

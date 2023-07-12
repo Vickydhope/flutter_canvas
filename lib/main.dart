@@ -5,6 +5,7 @@ import 'package:flutter_canvas/view/transform/feature/3d_card/view/3D_card_detai
 import 'package:flutter_canvas/view/transform/feature/3d_card/view/cards_3d_home.dart';
 import 'package:flutter_canvas/view/transform/feature/custom_painter/clock_page.dart';
 import 'package:flutter_canvas/view/transform/feature/disk_animation/disk_animation_page.dart';
+import 'package:flutter_canvas/view/transform/feature/dragable_bottom_sheet/draggable_bottom_sheet.dart';
 import 'package:flutter_canvas/view/transform/feature/games_dashboard/games_dashboard_page.dart';
 import 'package:flutter_canvas/view/transform/feature/glass_morphism/GlassMorpohismPage.dart';
 import 'package:flutter_canvas/view/transform/feature/hero_list/hero_list_page.dart';
@@ -38,6 +39,7 @@ enum AppRoutes {
   movies,
   movieDetails,
   movieGrid,
+  draggableBottomSheet,
   heroList,
   heroListVertical,
   places,
@@ -125,13 +127,19 @@ final _router = GoRouter(
       parentNavigatorKey: _rootNavigatorKey,
       path: "/games",
       name: AppRoutes.gamesDashboard.name,
-      builder: (context, state) => const GamesDashboardPage(),
+      builder: (context, state) =>  GamesDashboardPage(),
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
       path: "/movieGrid",
       name: AppRoutes.movieGrid.name,
       builder: (context, state) => const MoviesGridPage(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/draggableBottomSheet",
+      name: AppRoutes.draggableBottomSheet.name,
+      builder: (context, state) => const DraggableBottomSheet(),
     ),
     /*  GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

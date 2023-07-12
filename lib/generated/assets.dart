@@ -28,6 +28,7 @@ class Assets {
   static const String imagesImg5 = 'assets/images/img_5.png';
   static const String imagesJoker = 'assets/images/joker.jpg';
   static const String imagesMaldives = 'assets/images/maldives.webp';
+  static const String imagesMap = 'assets/images/map.png';
   static const String imagesPhuket = 'assets/images/phuket.webp';
   static const String imagesSeychelle = 'assets/images/seychelle.webp';
   static const String imagesSlider1 = 'assets/images/slider1.png';

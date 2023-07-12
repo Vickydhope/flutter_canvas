@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SizedBox(
         width: double.infinity,
-        child: Column(
+        child: ListView(
           children: [
             TextButton(
               onPressed: () {
@@ -86,6 +86,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 context.pushNamed(AppRoutes.clock.name);
               },
               child: Text(AppRoutes.clock.name.toUpperCase()),
+            ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.draggableBottomSheet.name);
+              },
+              child: Text(AppRoutes.draggableBottomSheet.name.toUpperCase()),
             ),
           ],
         ),

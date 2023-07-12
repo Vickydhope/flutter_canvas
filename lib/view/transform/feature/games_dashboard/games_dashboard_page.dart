@@ -14,16 +14,17 @@ class _GamesDashboardPageState extends State<GamesDashboardPage> {
 
   @override
   void initState() {
-    const averageHeight = 150;
+    const averageHeight = (50 * 99 + 150) / 100;
 
+    print(averageHeight * 100);
     controller = ScrollController()
       ..addListener(() {
         setState(() {
           final currentPoss = controller.offset;
-
           topIndex = currentPoss ~/ averageHeight;
 
-          print(controller.offset);
+          print("Top Index : $topIndex");
+          print("Offset : ${controller.offset}");
         });
       });
     super.initState();
@@ -36,12 +37,12 @@ class _GamesDashboardPageState extends State<GamesDashboardPage> {
         physics: const ClampingScrollPhysics(),
         controller: controller,
         itemBuilder: (context, index) => AnimatedContainer(
-          margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+          margin: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
               color: index == topIndex ? Colors.green : Colors.blue,
               borderRadius: BorderRadius.circular(16)),
-          height: 150,
-          duration: const Duration(milliseconds: 1000),
+          height: index == topIndex ? 150 : 50,
+          duration: const Duration(milliseconds: 300),
           child: Center(
             child: Text(
               "Item $index",
