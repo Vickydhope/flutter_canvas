@@ -54,7 +54,7 @@ class _LocationWidgetState extends State<LocationWidget> {
   }
 
   void onPanUpdate(DragUpdateDetails details) {
-    if (details.delta.dy < 5) {
+    if (details.delta.dy < -5) {
       setState(() {
         isExpanded = true;
       });
