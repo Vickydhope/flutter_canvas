@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_canvas/generated/assets.dart';
 import 'package:flutter_canvas/res/app_colors.dart';
+import 'package:flutter_canvas/view/clipper/customClipper/custom_clipper2.dart';
 import 'package:flutter_canvas/view/transform/feature/places_ui/components/hero_widget.dart';
 import 'package:flutter_canvas/view/transform/feature/places_ui/components/reviews_widget.dart';
 import 'package:flutter_canvas/view/transform/feature/places_ui/data/hero_tag.dart';
@@ -27,7 +28,7 @@ class PlaceDetailsPage extends StatelessWidget {
         body: CustomScrollView(slivers: [
           SliverAppBar(
             automaticallyImplyLeading: false,
-            expandedHeight: MediaQuery.of(context).size.height* .4,
+            expandedHeight: MediaQuery.of(context).size.height * .4,
             elevation: 0,
             backgroundColor: Colors.white,
             titleTextStyle:
@@ -45,14 +46,17 @@ class PlaceDetailsPage extends StatelessWidget {
               const SizedBox(width: 10)
             ],
             flexibleSpace: FlexibleSpaceBar(
-              collapseMode: CollapseMode.parallax,
+              collapseMode: CollapseMode.pin,
               background: Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
                   SizedBox.expand(
                     child: Hero(
                       tag: HeroTag.image(location.image),
-                      child: Image.asset(location.image, fit: BoxFit.cover),
+                      child: ClipPath(
+                          clipper: BackGroundClipper(),
+                          child:
+                              Image.asset(location.image, fit: BoxFit.cover)),
                     ),
                   ),
                   /* Container(

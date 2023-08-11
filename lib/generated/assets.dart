@@ -20,6 +20,7 @@ class Assets {
   static const String imagesBlackWidow = 'assets/images/black_widow.jpg';
   static const String imagesDisk = 'assets/images/disk.png';
   static const String imagesDubai = 'assets/images/dubai.webp';
+  static const String imagesHole = 'assets/images/hole.png';
   static const String imagesImg = 'assets/images/img.png';
   static const String imagesImg1 = 'assets/images/img_1.png';
   static const String imagesImg2 = 'assets/images/img_2.png';

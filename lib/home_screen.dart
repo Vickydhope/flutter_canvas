@@ -93,6 +93,30 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: Text(AppRoutes.draggableBottomSheet.name.toUpperCase()),
             ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.customClipper.name);
+              },
+              child: Text(AppRoutes.customClipper.name.toUpperCase()),
+            ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.animatedSidebar.name);
+              },
+              child: Text(AppRoutes.animatedSidebar.name.toUpperCase()),
+            ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.blackhole.name);
+              },
+              child: Text(AppRoutes.blackhole.name.toUpperCase()),
+            ),
+            TextButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.customSliverAppBar.name);
+              },
+              child: Text(AppRoutes.customSliverAppBar.name.toUpperCase()),
+            ),
           ],
         ),
       ),

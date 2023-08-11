@@ -73,17 +73,16 @@ class ClockPainter extends CustomPainter {
       ..color = Colors.orange
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
-      ..strokeWidth = 8;
+      ..strokeWidth = 3;
 
     var minHandBrush = Paint()
       ..shader = const RadialGradient(colors: [
         Color(0xFF748EF6),
         Color(0xFF77DDFF),
       ]).createShader(Rect.fromCircle(center: center, radius: radius))
-      ..color = Colors.orange
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 12;
+      ..strokeWidth = 10;
 
     var hourHandBrush = Paint()
       ..shader = const RadialGradient(colors: [
@@ -99,19 +98,23 @@ class ClockPainter extends CustomPainter {
     canvas.drawCircle(center, radius - 40, outlineBrush);
 
     var hourHandX = centerX +
-        50 * cos((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
+        radius /
+            3.5 *
+            cos((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
     var hourHandY = centerX +
-        50 * sin((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
+        radius /
+            3.5 *
+            sin((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
 
     canvas.drawLine(center, Offset(hourHandX, hourHandY), hourHandBrush);
 
-    var minHandX = centerX + 70 * cos(dateTime.minute * 6 * pi / 180);
-    var minHandY = centerX + 70 * sin(dateTime.minute * 6 * pi / 180);
+    var minHandX = centerX + radius / 2.5 * cos(dateTime.minute * 6 * pi / 180);
+    var minHandY = centerX + radius / 2.5 * sin(dateTime.minute * 6 * pi / 180);
 
     canvas.drawLine(center, Offset(minHandX, minHandY), minHandBrush);
 
-    var secHandX = centerX + 85 * cos(dateTime.second * 6 * pi / 180);
-    var secHandY = centerX + 85 * sin(dateTime.second * 6 * pi / 180);
+    var secHandX = centerX + radius / 1.8 * cos(dateTime.second * 6 * pi / 180);
+    var secHandY = centerX + radius / 1.8 * sin(dateTime.second * 6 * pi / 180);
 
     canvas.drawLine(center, Offset(secHandX, secHandY), secHandBrush);
 

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_canvas/view/clipper/customClipper/custom_clipper.dart';
+import 'package:flutter_canvas/view/clipper/customClipper/custom_clipper2.dart';
+import 'package:flutter_canvas/view/sliver_animations/fading_sliver_app_bar/fading_app_bar_page.dart';
 import 'package:flutter_canvas/view/splash/splash_screen.dart';
 import 'package:flutter_canvas/view/transform/feature/3d_card/data/model/card3d.dart';
 import 'package:flutter_canvas/view/transform/feature/3d_card/view/3D_card_details.dart';
 import 'package:flutter_canvas/view/transform/feature/3d_card/view/cards_3d_home.dart';
+import 'package:flutter_canvas/view/transform/feature/blackhole_animation/presentation/pages/blackhole_animation_page.dart';
+import 'package:flutter_canvas/view/transform/feature/custom_drawer/pages/animated_sidebar_page.dart';
 import 'package:flutter_canvas/view/transform/feature/custom_painter/clock_page.dart';
 import 'package:flutter_canvas/view/transform/feature/disk_animation/disk_animation_page.dart';
 import 'package:flutter_canvas/view/transform/feature/dragable_bottom_sheet/draggable_bottom_sheet.dart';
@@ -24,6 +29,7 @@ import 'package:flutter_canvas/home_screen.dart';
 import 'package:flutter_canvas/search_screen.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
+import 'view/clipper/customClipper/container_custom_shape.dart';
 import 'view/transform/feature/credit_card/view/moving_card_page.dart';
 
 enum AppRoutes {
@@ -40,12 +46,16 @@ enum AppRoutes {
   movieDetails,
   movieGrid,
   draggableBottomSheet,
+  customSliverAppBar,
   heroList,
   heroListVertical,
   places,
   diskAnimation,
   gamesDashboard,
   clock,
+  blackhole,
+  animatedSidebar,
+  customClipper,
 }
 
 void main() {
@@ -127,7 +137,7 @@ final _router = GoRouter(
       parentNavigatorKey: _rootNavigatorKey,
       path: "/games",
       name: AppRoutes.gamesDashboard.name,
-      builder: (context, state) =>  GamesDashboardPage(),
+      builder: (context, state) => GamesDashboardPage(),
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
@@ -137,9 +147,27 @@ final _router = GoRouter(
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
+      path: "/animatedSidebar",
+      name: AppRoutes.animatedSidebar.name,
+      builder: (context, state) => const AnimateSideBarPage(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/customClipper",
+      name: AppRoutes.customClipper.name,
+      builder: (context, state) => const CustomShapedContainer(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
       path: "/draggableBottomSheet",
       name: AppRoutes.draggableBottomSheet.name,
       builder: (context, state) => const DraggableBottomSheet(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/sliverAppBar",
+      name: AppRoutes.customSliverAppBar.name,
+      builder: (context, state) => const FadingAppBarPage(),
     ),
     /*  GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
@@ -182,6 +210,12 @@ final _router = GoRouter(
       path: "/clock",
       name: AppRoutes.clock.name,
       builder: (context, state) => const ClockPage(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: "/blackhole",
+      name: AppRoutes.blackhole.name,
+      builder: (context, state) => const BlackHoleAnimationPage(),
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

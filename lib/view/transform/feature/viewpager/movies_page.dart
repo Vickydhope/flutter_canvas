@@ -29,27 +29,31 @@ class _MoviesPageState extends State<MoviesPage> {
               items: getMovies()
                   .map(
                     (movie) => GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            PageRouteBuilder(
-                              transitionDuration: 700.ms,
-                              reverseTransitionDuration: 300.ms,
-                              pageBuilder:
-                                  (context, animation, secondaryAnimation) {
-                                return FadeTransition(
-                                  opacity: CurvedAnimation(parent: animation, curve: Curves.fastOutSlowIn),
-                                  child: MovieDetailsPage(
-                                      movie: movie, animation: animation),
-                                );
-                              },
-                            ),
-                          );
-                          /* context.pushNamed(
-                            AppRoutes.movieDetails.name,
-                            extra: movie,
-                          );*/
-                        },
-                        child: MovieCard(movie: movie)),
+                      onTap: () {
+                        Navigator.of(context).push(
+                          PageRouteBuilder(
+                            transitionDuration: 700.ms,
+                            reverseTransitionDuration: 300.ms,
+                            pageBuilder: (
+                              context,
+                              animation,
+                              secondaryAnimation,
+                            ) {
+                              return FadeTransition(
+                                opacity: CurvedAnimation(
+                                    parent: animation,
+                                    curve: Curves.fastOutSlowIn),
+                                child: MovieDetailsPage(
+                                  movie: movie,
+                                  animation: animation,
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                      child: MovieCard(movie: movie),
+                    ),
                   )
                   .toList(),
               options: CarouselOptions(
