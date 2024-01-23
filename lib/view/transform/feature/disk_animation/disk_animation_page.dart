@@ -41,7 +41,6 @@ const _minTitleSize = 20.0;
 const _minSubTitleSize = 15.0;
 
 class _MyDiskHeaderDelegate extends SliverPersistentHeaderDelegate {
-
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -61,7 +60,6 @@ class _MyDiskHeaderDelegate extends SliverPersistentHeaderDelegate {
     const textMovement = 52.0;
 
     final leftTextMargin = maxMargin + (textMovement * percent);
-
 
     return Container(
       color: _colorHeader,

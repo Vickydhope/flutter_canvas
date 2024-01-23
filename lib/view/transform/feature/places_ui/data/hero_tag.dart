@@ -15,7 +15,6 @@ class HeroTag {
 
   static String avatar(Review review, int position) {
     var tag = review.urlImage + position.toString();
-    print(tag);
     return tag;
   }
 }

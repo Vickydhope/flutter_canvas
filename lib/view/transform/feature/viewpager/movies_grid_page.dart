@@ -29,11 +29,12 @@ class MoviesGridPage extends StatelessWidget {
                     reverseTransitionDuration: 750.ms,
                     pageBuilder: (context, animation, secondaryAnimation) {
                       return FadeTransition(
-                          opacity: animation,
-                          child: MovieDetailsPage(
-                            movie: movie,
-                            animation: animation,
-                          ));
+                        opacity: animation,
+                        child: MovieDetailsPage(
+                          movie: movie,
+                          animation: animation,
+                        ),
+                      );
                     },
                   ),
                 );

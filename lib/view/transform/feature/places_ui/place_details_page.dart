@@ -77,7 +77,6 @@ class PlaceDetailsPage extends StatelessWidget {
   buildReviewsList() => SliverList.builder(
       itemBuilder: (context, index) {
         final review = location.reviews[index];
-
         return AnimatedBuilder(
           animation: animation,
           builder: (context, child) => FadeTransition(

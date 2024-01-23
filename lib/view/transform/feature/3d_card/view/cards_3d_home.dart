@@ -122,6 +122,7 @@ class _CardBodyState extends State<CardBody> with TickerProviderStateMixin {
       upperBound: 0.5,
       duration: const Duration(milliseconds: 300),
     );
+
     _animationControllerMovement = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 750),
