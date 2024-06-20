@@ -26,6 +26,7 @@ class GlassMorphismPage extends StatelessWidget {
           title: const Text(
             "Glass Morphism",
             style: TextStyle(
+
               color: Colors.black87,
             ),
           ),
