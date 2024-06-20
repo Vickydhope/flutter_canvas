@@ -2,8 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_canvas/generated/assets.dart';
-import 'package:flutter_canvas/res/app_colors.dart';
-import 'package:flutter_canvas/res/num_duration_extensions.dart';
 
 class BlackHoleAnimationPage extends StatefulWidget {
   const BlackHoleAnimationPage({Key? key}) : super(key: key);
@@ -18,33 +16,34 @@ class _BlackHoleAnimationPageState extends State<BlackHoleAnimationPage>
 
   late final holeSizeTween = Tween<double>(
     begin: 0,
-    end: 1.5 * cardSize,
+    end: 1.9 * cardSize,
   );
   late final holeAnimationController = AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds: 400),
+    duration: const Duration(milliseconds: 300),
   );
 
-  double get holeSize => holeSizeTween.evaluate(holeAnimationController);
   late final cardOffsetAnimationController = AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds: 1000),
+    duration: const Duration(milliseconds: 800),
   );
 
   late final cardOffsetTween = Tween<double>(
     begin: 0,
-    end: 2 * cardSize,
+    end: cardSize * 1.45,
   ).chain(CurveTween(curve: Curves.easeInBack));
 
   late final cardRotationTween = Tween<double>(
     begin: 0,
-    end: 0.5,
+    end: 0.7,
   ).chain(CurveTween(curve: Curves.easeInBack));
 
   late final cardElevationTween = Tween<double>(
     begin: 2,
     end: 20,
   );
+
+  double get holeSize => holeSizeTween.evaluate(holeAnimationController);
 
   double get cardOffset =>
       cardOffsetTween.evaluate(cardOffsetAnimationController);
@@ -77,10 +76,13 @@ class _BlackHoleAnimationPageState extends State<BlackHoleAnimationPage>
         children: [
           FloatingActionButton(
             onPressed: () async {
+              if (cardOffsetAnimationController.value > 0) return;
               holeAnimationController.forward();
               await cardOffsetAnimationController.forward();
-              Future.delayed(const Duration(milliseconds: 200),
-                  () => holeAnimationController.reverse());
+              Future.delayed(
+                const Duration(milliseconds: 200),
+                () => holeAnimationController.reverse(),
+              );
             },
             child: const Icon(Icons.remove),
           ),
@@ -95,8 +97,8 @@ class _BlackHoleAnimationPageState extends State<BlackHoleAnimationPage>
         ],
       ),
       body: Center(
-        child: SizedBox(
-          height: cardSize * 1.35,
+        child: Container(
+          height: cardSize * 1.5,
           width: double.infinity,
           child: ClipPath(
             clipper: BlackHoleClipper(),
@@ -112,17 +114,15 @@ class _BlackHoleAnimationPageState extends State<BlackHoleAnimationPage>
                   ),
                 ),
                 Positioned(
+                  bottom: 35,
                   child: Center(
                     child: Transform.translate(
                       offset: Offset(0, cardOffset),
                       child: Transform.rotate(
                         angle: cardRotation,
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: HelloWorldCard(
-                            size: cardSize,
-                            elevation: cardElevation,
-                          ),
+                        child: HelloWorldCard(
+                          size: cardSize,
+                          elevation: cardElevation,
                         ),
                       ),
                     ),
