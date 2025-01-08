@@ -75,6 +75,7 @@ class _BlackHoleAnimationPageState extends State<BlackHoleAnimationPage>
         mainAxisSize: MainAxisSize.min,
         children: [
           FloatingActionButton(
+            heroTag: "decrement",
             onPressed: () async {
               if (cardOffsetAnimationController.value > 0) return;
               holeAnimationController.forward();
@@ -88,6 +89,7 @@ class _BlackHoleAnimationPageState extends State<BlackHoleAnimationPage>
           ),
           const SizedBox(width: 20),
           FloatingActionButton(
+            heroTag: "increment",
             onPressed: () {
               cardOffsetAnimationController.reverse();
               holeAnimationController.reverse();

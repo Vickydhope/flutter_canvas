@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_canvas/view/transform/feature/viewpager/model/movie.dart';
 
 class MovieDetailsPage extends StatefulWidget {
-  const MovieDetailsPage({Key? key, required this.movie, this.animation})
-      : super(key: key);
+  const MovieDetailsPage({Key? key, required this.movie, this.animation}) : super(key: key);
 
   final Movie movie;
   final Animation<double>? animation;
@@ -12,8 +11,7 @@ class MovieDetailsPage extends StatefulWidget {
   State<MovieDetailsPage> createState() => _MovieDetailsPageState();
 }
 
-class _MovieDetailsPageState extends State<MovieDetailsPage>
-    with SingleTickerProviderStateMixin {
+class _MovieDetailsPageState extends State<MovieDetailsPage> with SingleTickerProviderStateMixin {
   final duration = const Duration(milliseconds: 600);
 
   @override
@@ -81,28 +79,23 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
                   ),
                   AnimatedBuilder(
                     animation: widget.animation!,
-                    builder: (BuildContext context, Widget? child) =>
-                        Transform.translate(
+                    builder: (BuildContext context, Widget? child) => Transform.translate(
                       offset: Offset(
                         0,
-                        -(((widget.animation?.value ?? 1) - 1) *
-                            (MediaQuery.of(context).size.height / 2)),
+                        -(((widget.animation?.value ?? 1) - 1) * (MediaQuery.of(context).size.height / 2)),
                       ),
                       child: FadeTransition(
                           opacity: CurvedAnimation(
                             parent: widget.animation!,
-                            curve: const Interval(0, 0.8,
-                                curve: Curves.easeInSine),
+                            curve: const Interval(0, 0.8, curve: Curves.easeInSine),
                           ),
                           child: child),
                     ),
                     child: ScaleTransition(
                         scale: CurvedAnimation(
                             parent: widget.animation!,
-                            reverseCurve: const Interval(0, 0.8,
-                                curve: Curves.fastOutSlowIn),
-                            curve:
-                                const Interval(0, 0.8, curve: Curves.easeOut)),
+                            reverseCurve: const Interval(0, 0.8, curve: Curves.fastOutSlowIn),
+                            curve: const Interval(0, 0.8, curve: Curves.easeOut)),
                         child: _buildDescription(widget.movie)),
                   )
                 ],
@@ -119,9 +112,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
       children: [
         Hero(
             tag: movie.title + movie.rating.toString(),
-            child: Material(
-                color: Colors.transparent,
-                child: Text(movie.rating.toStringAsFixed(1)))),
+            child: Material(color: Colors.transparent, child: Text(movie.rating.toStringAsFixed(1)))),
         const SizedBox(
           width: 5,
         ),

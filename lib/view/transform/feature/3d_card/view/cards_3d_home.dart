@@ -294,6 +294,6 @@ List<Card3d> _getCards() => [
       Card3d(
         title: "Miami Horror Illumination",
         image:
-            "https://e.snmc.io/i/1200/s/9114e01b9bce4d4e819641b9feda3344/4151122",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cc222b181219623.651824f01db13.jpeg",
       ),
     ];

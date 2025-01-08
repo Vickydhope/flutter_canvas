@@ -1,5 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart' as cs;
+import 'package:flutter/material.dart' hide CarouselController;
 import 'package:flutter_canvas/generated/assets.dart';
 import 'package:flutter_canvas/res/num_duration_extensions.dart';
 import 'package:flutter_canvas/view/transform/feature/viewpager/components/background_widget.dart';
@@ -25,7 +25,7 @@ class _MoviesPageState extends State<MoviesPage> {
           BackgroundWidget(controller: _controller, movies: getMovies()),
           Align(
             alignment: Alignment.bottomCenter,
-            child: CarouselSlider(
+            child: cs.CarouselSlider(
               items: getMovies()
                   .map(
                     (movie) => GestureDetector(
@@ -56,7 +56,7 @@ class _MoviesPageState extends State<MoviesPage> {
                     ),
                   )
                   .toList(),
-              options: CarouselOptions(
+              options: cs.CarouselOptions(
                 pageSnapping: true,
                 enableInfiniteScroll: false,
                 viewportFraction: 0.65,
